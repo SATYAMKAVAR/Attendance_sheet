@@ -8,8 +8,8 @@ const Attendancesheet = () => {
         <>
             <ParticlesBackground />
             <div className="p-5">
-                <div className=" d-flex justify-content-around">
-                    <div class="customcard card border border-light w-25">
+                <div className=" d-md-flex justify-content-around">
+                    <div class="customcard card border border-light mt-5">
                         <div className="card-header">
                             <h5 className="card-title">
                                 class A
@@ -20,7 +20,7 @@ const Attendancesheet = () => {
                             <Link to='/AttendanceOfA' class="btn btn-outline-light">Click here</Link>
                         </div>
                     </div>
-                    <div class="customcard card border border-light w-25">
+                    <div class="customcard card border border-light mt-5">
                         <div className="card-header">
                             <h5 className="card-title">
                                 class B

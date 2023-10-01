@@ -13,7 +13,7 @@ const Dateall = () => {
     
     const formateddate = data.map((data) => {
         return (
-            <div className="col-3 p-3">
+            <div className="col-md-3 p-3">
                 <div className="card customcard border borer-light">
                     <div className="card-header row">
                         <h5 className="card-title col">

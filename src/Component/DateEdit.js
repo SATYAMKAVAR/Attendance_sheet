@@ -11,23 +11,21 @@ const DateEdit = () => {
             .then((res) => { return res.json() })
             .then((res) => {
                 if (res.a1 < 100) {
-                    setData({ ...res, a1: '' })
+                    res.a1 = '';
                 }
                 if (res.a2 < 100) {
-                    setData({ ...res, a2: '' })
+                    res.a2 = '';
                 }
                 if (res.a3 < 100) {
-                    setData({ ...res, a3: '' })
+                    res.a3 = '';
                 }
                 if (res.b1 < 100) {
-                    setData({ ...res, b1: '' })
+                    res.b1 = '';
                 }
                 if (res.b2 < 100) {
-                    setData({ ...res, b2: '' })
+                    res.b2 = '';
                 }
-                else{
-                    setData(res)
-                }
+                setData(res);  
             });
     }, []);
 
