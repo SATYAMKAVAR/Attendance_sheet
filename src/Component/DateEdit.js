@@ -7,26 +7,9 @@ const DateEdit = () => {
     const [data, setData] = useState({});
     const navigate = useNavigate();
     useEffect(() => {
-        fetch("https://650af604dfd73d1fab094ac2.mockapi.io/attendance_sheet" + "/" + id, { method: "get" })
+        fetch("https://attendance-sheet-api-qp6c.onrender.com" + "/" + id, { method: "get" })
             .then((res) => { return res.json() })
-            .then((res) => {
-                if (res.a1 < 100) {
-                    res.a1 = '';
-                }
-                if (res.a2 < 100) {
-                    res.a2 = '';
-                }
-                if (res.a3 < 100) {
-                    res.a3 = '';
-                }
-                if (res.b1 < 100) {
-                    res.b1 = '';
-                }
-                if (res.b2 < 100) {
-                    res.b2 = '';
-                }
-                setData(res);  
-            });
+            .then((res) => { setData(res) });
     }, []);
 
     const handleClassA = () => {
@@ -64,10 +47,10 @@ const DateEdit = () => {
     }
     const handlesave = () => {
 
-        fetch("https://650af604dfd73d1fab094ac2.mockapi.io/attendance_sheet/" + id, {
+        fetch("https://attendance-sheet-api-qp6c.onrender.com" + "/" + id, {
             method: "put",
-            body: JSON.stringify(data),
-            headers: { "Content-Type": "application/json" }
+            body: new URLSearchParams(data),
+            headers: { "Content-Type": "application/x-www-form-urlencoded" }
         }).then(() => { navigate('/DateByid/' + id) })
     }
     return (

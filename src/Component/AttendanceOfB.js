@@ -5,7 +5,16 @@ import ParticlesBackground from "./particlesbackground";
 const AttendanceOfB = () => {
 
     const [rno, setRno] = useState(401);
-    const [data, setData] = useState({});
+    const [data, setData] = useState({
+        a1: "",
+        a2: "",
+        a3: "",
+        b1: "",
+        b2: "",
+        date: "",
+        countera: "",
+        counterb: ""
+    });
     const [counter, setCounter] = useState(2);
     const navigate = useNavigate();
 
@@ -24,16 +33,16 @@ const AttendanceOfB = () => {
 
         setRno(rno + 1);
         if (rno > 400 && rno < 500) {
-            if (data.b1 == null) {
-                setData({ ...data, b1: rno, a1: '', a2: '', a3: '', date: today });
+            if (data.b1 == "") {
+                setData({ ...data, b1: rno, date: today });
             }
             else {
                 setData({ ...data, b1: data.b1 + "," + rno, date: today });
             }
         }
         if (rno > 500 && rno < 600) {
-            if (data.b2 == null) {
-                setData({ ...data, b2: rno, a1: '', a2: '', a3: '', date: today });
+            if (data.b2 == "") {
+                setData({ ...data, b2: rno, date: today });
             }
             else {
                 setData({ ...data, b2: data.b2 + "," + rno, date: today });
@@ -50,10 +59,10 @@ const AttendanceOfB = () => {
     }
     const handlesave = () => {
 
-        fetch("https://650af604dfd73d1fab094ac2.mockapi.io/attendance_sheet", {
+        fetch("https://attendance-sheet-api-qp6c.onrender.com", {
             method: "POST",
-            body: JSON.stringify(data),
-            headers: { "Content-Type": "application/json" }
+            body: new URLSearchParams(data),
+            headers: { "Content-Type": "application/x-www-form-urlencoded" }
         }).then(() => { navigate('/') })
     }
 

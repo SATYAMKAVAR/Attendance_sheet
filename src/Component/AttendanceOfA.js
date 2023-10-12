@@ -5,7 +5,16 @@ import ParticlesBackground from "./particlesbackground";
 const AttendanceOfA = () => {
 
     const [rno, setRno] = useState(101);
-    const [data, setData] = useState({})
+    const [data, setData] = useState({
+        a1: "",
+        a2: "",
+        a3: "",
+        b1: "",
+        b2: "",
+        date: "",
+        countera: "",
+        counterb: ""
+    })
     const [counter, setCounter] = useState(2);
     const navigate = useNavigate();
   
@@ -37,30 +46,30 @@ const AttendanceOfA = () => {
 
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
         var yyyy = today.getFullYear();
         today = mm + '/' + dd + '/' + yyyy;
 
         setRno(rno + 1);
         if (rno > 100 && rno < 200) {
-            if (data.a1 == null) {
-                setData({ ...data, a1: rno, b1: '', b2: '', date: today });
+            if (data.a1 == "") {
+                setData({ ...data, a1: rno,date: today });
             }
             else {
                 setData({ ...data, a1: data.a1 + "," + rno, date: today });
             }
         }
         if (rno > 200 && rno < 300) {
-            if (data.a2 == null) {
-                setData({ ...data, a2: rno, b1: '', b2: '', date: today });
+            if (data.a2 == "") {
+                setData({ ...data, a2: rno, date: today });
             }
             else {
                 setData({ ...data, a2: data.a2 + "," + rno, date: today });
             }
         }
         if (rno > 300 && rno < 400) {
-            if (data.a3 == null) {
-                setData({ ...data, a3: rno, b1: '', b2: '', date: today });
+            if (data.a3 == "") {
+                setData({ ...data, a3: rno, date: today });
             }
             else {
                 setData({ ...data, a3: data.a3 + "," + rno, date: today });
@@ -78,10 +87,11 @@ const AttendanceOfA = () => {
     }
       
     const handlesave = () => {
-        fetch("https://650af604dfd73d1fab094ac2.mockapi.io/attendance_sheet", {
+
+        fetch("https://attendance-sheet-api-qp6c.onrender.com", {
             method: "POST",
-            body: JSON.stringify(data),
-            headers: { "Content-Type": "application/json" }
+            body: new URLSearchParams(data),
+            headers: { "Content-Type": "application/x-www-form-urlencoded" }
         })
             .then(() => { navigate('/') });
     }
@@ -105,9 +115,6 @@ const AttendanceOfA = () => {
                         <h1 className="text-white">{rno}</h1>
                     </div>
                     <div className="d-flex justify-content-center m-3">
-                        {/* <button className="btn btn-info mx-3" onClick={handleback}>
-                        Back
-                    </button> */}
                         <button className="btn btn-info mx-3" onClick={handlePresent}>
                             Present
                         </button>
@@ -115,6 +122,8 @@ const AttendanceOfA = () => {
                             Absent
                         </button>
                     </div>
+                    <div className="d-flex justify-content-center m-3">
+                        </div>
                     <div className="justify-content-center m-3">
                         <div>
                             <label for="exampleFormControlTextarea1" className="form-label text-white"><b>Absent roll number</b></label>

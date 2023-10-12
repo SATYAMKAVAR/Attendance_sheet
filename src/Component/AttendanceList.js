@@ -6,7 +6,7 @@ const Dateall = () => {
     const [data, setData] = useState([]);
     const navigate = useNavigate();
     useEffect(() => {
-        fetch("https://650af604dfd73d1fab094ac2.mockapi.io/attendance_sheet")
+        fetch("https://attendance-sheet-api-qp6c.onrender.com")
             .then((res) => { return res.json() })
             .then((res) => { setData(res) })
     }, [])
@@ -26,7 +26,7 @@ const Dateall = () => {
                     </div>
                     <div className="card-body">
                         <p className="card-text">Click below for show Attendance of this date : {data.date}</p>
-                        <Link className="btn btn-outline-light" to={'/Datebyid/' + data.id}>click here</Link>
+                        <Link className="btn btn-outline-light" to={'/Datebyid/' + data._id}>click here</Link>
                     </div>
                 </div>
             </div>

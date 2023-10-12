@@ -7,36 +7,13 @@ const Datebyid = () => {
   const [data, setData] = useState({});
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("https://650af604dfd73d1fab094ac2.mockapi.io/attendance_sheet" + "/" + id, { method: "get" })
+    fetch("https://attendance-sheet-api-qp6c.onrender.com" + "/" + id, { method: "get" })
       .catch()
       .then((res) => { return res.json() })
-      .then((res) => {
-
-        if (res.a1 <= 100) {
-          setData({ ...res, a1: '' })
-        }
-        else if (res.a2 <= 100) {
-          setData({ ...res, a2: '' })
-        }
-        else if (res.a3 <= 100) {
-          setData({ ...res, a3: '' })
-        }
-        else {
-          setData(res)
-        }
-      });
+      .then((res) => { setData(res) });
   }, []);
 
   const handleClassA = () => {
-    if (data.a1 < 100) {
-      data.a1 = '';
-    }
-    if (data.a2 < 100) {
-      data.a2 = '';
-    }
-    if (data.a3 < 100) {
-      data.a3 = '';
-    }
     if (!(data.a1 || data.a2 || data.a3) == '') {
       return (
         <>
@@ -52,12 +29,6 @@ const Datebyid = () => {
     }
   }
   const handleClassB = () => {
-    if (data.b1 < 100) {
-      data.b1 = '';
-    }
-    if (data.b2 < 100) {
-      data.b2 = '';
-    }
     if (!(data.b1 || data.b2) == '') {
       return (
         <>
@@ -71,7 +42,7 @@ const Datebyid = () => {
     }
   }
   const handleDelete = () => {
-    fetch("https://650af604dfd73d1fab094ac2.mockapi.io/attendance_sheet" + "/" + id, { method: "delete" })
+    fetch("https://attendance-sheet-api-qp6c.onrender.com" + "/" + id, { method: "delete" })
       .then(() => { navigate('/AttendanceList') });
   }
 

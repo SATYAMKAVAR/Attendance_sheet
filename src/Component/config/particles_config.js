@@ -33,7 +33,7 @@ const particlesconfig = {
       detectsOn: "window",
       events: {
         onClick: {
-          enable: true,
+          enable: false,
           mode: "push"
         },
         onDiv: {
@@ -44,11 +44,11 @@ const particlesconfig = {
         },
         onHover: {
           enable: true,
-          mode: "trail",
+          mode: "repulse",
           parallax: {
             enable: false,
             force: 2,
-            smooth: 10
+            smooth: 50
           }
         },
         resize: {
