@@ -1,13 +1,14 @@
 .customcard {
     background-color: rgba(0, 0, 0, .1) !important;
     color: #fff !important;
+    transition: all 0.4s;
 
 }
 .customcard:hover {
-    transform: scale(1.05);
-    border: rgb(143, 136, 136, .9) !important;
+    transform: scale(1.08);
+    /* border: rgb(143, 136, 136, .9) !important;    */
     opacity: 100% !important;
-    box-shadow: 3px 3px 3px 3px rgba(232, 230, 230, 0.868);
+    box-shadow: 8px 8px 2px 1px rgba(232, 230, 230, 0.868);
 }
 .btn-info:hover{
     background-color: black;
